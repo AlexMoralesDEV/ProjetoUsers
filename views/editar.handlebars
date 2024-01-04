@@ -1,0 +1,36 @@
+<div class="container text-center">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+
+            <h1 class="m-5">Atualizar Dados Cadastrais</h1>
+
+
+                <form action="/users/update/{{user.id}}" name="users" method="post">
+                <label class="my-3" for="name">Nome</label>
+                <input type="text" class="form-control" value="{{user.name}}" id="name" name="name">
+                <label class="my-3" for="trabalho">Trabalho</label>
+                <input type="text" class="form-control" value="{{user.occupation}}" id="occupation" name="occupation">
+                
+
+                <label class="my-3" for="newslette1">Aceita receber nossas notícias?</label>
+                
+                {{#if user.newsletter}}   
+
+                <input type="checkbox" name="newsletter" id="newsletter1" value="true" checked>
+
+                {{else }}            
+
+                <input type="checkbox" name="newsletter" id="newsletter1" value="true">
+
+                {{/if}}                
+
+                <button class="btn btn-success form-control my-3">Atualizar</button>
+            </form>
+
+
+        </div>
+        <div class="col-2"></div>
+    </div>
+    <a href="/users">Voltar</a>
+</div>

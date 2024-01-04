@@ -1,0 +1,23 @@
+<div class="container text-center">
+    <div class="row">
+        {{#each users}}
+        <div class="col-sm-12 col-xl-4 my-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{this.name}}</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">ID</h6>
+                    <p class="card-text">
+                    <p>{{this.id}}</p>
+                    </p>
+                    <div class="w-100 d-flex justify-content-between">
+                        <a href="/users/{{this.id}}" class="card-link btn btn-outline-primary">Mais informações</a>
+                        <a href="/users/editarUser/{{this.id}}" class="card-link btn btn-outline-primary">Editar</a>
+                        <a href="/users/apagar/{{this.id}}" class="card-link btn btn-outline-danger">Apagar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        <div class="col-12 text-start mt-5"><a href="/">Voltar</a></div>
+    </div>
+</div>
