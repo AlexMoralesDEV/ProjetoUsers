@@ -5,6 +5,7 @@ const path = require('node:path');
 const conne = require('./db/conne');
 const route = require('./routes');
 const { UserModel } = require('./models/UserModel');
+const { AddressModel } = require('./models/AddressModel');
 
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
@@ -16,7 +17,9 @@ app.use(express.static(path.resolve(__dirname, 'public')))
 app.use(route);
 
 
-conne.sync()
+conne
+    .sync()
+    // .sync({ force: true })
     .then(() => {
         app.listen(3000, () => {
             console.log('O servidor está rodando!');

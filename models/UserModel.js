@@ -1,5 +1,4 @@
 const { DataTypes } = require('sequelize');
-
 const db = require('../db/conne');
 
 const UserModel = db.define('User', {
@@ -25,14 +24,13 @@ class User {
 
     async cadastrar() {
         this.validar();
-        console.log(this.body);
         this.user = await UserModel.create(this.body);
         return this.user;
     }
 
     async atualizar(id) {
         this.validar();
-       
+
         this.body = {
             id: id,
             name: this.body.name,
@@ -65,8 +63,13 @@ class User {
     }
 
     static async exibirUserporId(id) {
-        const user = await UserModel.findOne({ raw: true, where: { id: id } })
-        return user;
+        try {
+            const { AddressModel } = require('./AddressModel');
+            const user = await UserModel.findOne({ include: AddressModel, where: { id: id } })
+            return user;
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     static async removerUser(id) {
@@ -77,5 +80,6 @@ class User {
         })
     }
 }
+
 
 module.exports = { UserModel, User };

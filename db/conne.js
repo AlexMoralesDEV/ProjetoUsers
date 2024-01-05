@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('nodesequelize', 'root', '.anchorCabecalhoHTML5!', {
+const sequelize = new Sequelize('nodesequelize2', 'root', '.anchorCabecalhoHTML5!', {
     host: 'localhost',
     dialect: 'mysql'
 });

@@ -22,8 +22,13 @@ exports.apagarUser = async (req, res) => {
 };
 
 exports.atualizarDados = async (req, res) => {
-    const user = await User.exibirUserporId(req.params.id);
-    res.render('editar', { user });
+    try {
+        const user = await User.exibirUserporId(req.params.id);
+        console.log(user);
+        res.render('editar', { user: user.get({ plain: true }) });
+    }catch(err){
+        console.log(err)
+    }
 };
 
 exports.update = async (req, res) => {
