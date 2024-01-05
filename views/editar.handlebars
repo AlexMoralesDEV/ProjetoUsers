@@ -4,31 +4,59 @@
         <div class="col-8">
 
             <h1 class="m-5">Atualizar Dados Cadastrais</h1>
-
+            
+            <div class="usuario-container text-start">
+                <h3>Dados Pessoais</h3>
 
                 <form action="/users/update/{{user.id}}" name="users" method="post">
-                <label class="my-3" for="name">Nome</label>
-                <input type="text" class="form-control" value="{{user.name}}" id="name" name="name">
-                <label class="my-3" for="trabalho">Trabalho</label>
-                <input type="text" class="form-control" value="{{user.occupation}}" id="occupation" name="occupation">
-                
-
-                <label class="my-3" for="newslette1">Aceita receber nossas notícias?</label>
-                
-                {{#if user.newsletter}}   
-
-                <input type="checkbox" name="newsletter" id="newsletter1" value="true" checked>
-
-                {{else }}            
-
-                <input type="checkbox" name="newsletter" id="newsletter1" value="true">
-
-                {{/if}}                
-
-                <button class="btn btn-success form-control my-3">Atualizar</button>
-            </form>
+                    <label class="my-3" for="name">Nome</label>
+                    <input type="text" class="form-control" value="{{user.name}}" id="name" name="name">
+                    <label class="my-3" for="trabalho">Trabalho</label>
+                    <input type="text" class="form-control" value="{{user.occupation}}" id="occupation"
+                        name="occupation">
 
 
+                    <label class="my-3" for="newslette1">Aceita receber nossas notícias?</label>
+
+                    {{#if user.newsletter}}
+
+                    <input type="checkbox" name="newsletter" id="newsletter1" value="true" checked>
+
+                    {{else }}
+
+                    <input type="checkbox" name="newsletter" id="newsletter1" value="true">
+
+                    {{/if}}
+
+                    <button class="btn btn-success form-control my-3">Atualizar</button>
+                </form>
+            </div>
+
+            <div class="address-container my-3 text-start">
+
+                <h3>Adicionar Endereço</h3>
+
+                <form action="/address/create" name="address" method="post">
+                    <input type="hidden" name="UserId" value="{{user.id}}">
+                    <label class="my-3" for="rua">Rua</label>
+                    <input type="text" class="form-control" value="" id="rua" name="rua">
+                    <label class="my-3" for="numero">Número</label>
+                    <input type="text" class="form-control" value="" id="numero" name="numero">
+                    <label class="my-3" for="cidade">Cidade</label>
+                    <input type="text" class="form-control" value="" id="cidade" name="cidade">
+                    <button class="btn btn-success form-control my-3">Salvar</button>
+                </form>
+
+                <div class="lista-de-enderecos">
+                    <h5>Lista de Endereços</h5>
+                    <ul>
+                        {{#each user.Addresses}}
+                        <li>{{this.id}} - {{this.rua}}, <b>{{this.numero}}</b> - {{this.cidade}} - <a href="/address/remove/{{this.id}}">Remover</a></li>
+                        {{/each}}
+                    </ul>
+                </div>
+
+            </div>
         </div>
         <div class="col-2"></div>
     </div>
