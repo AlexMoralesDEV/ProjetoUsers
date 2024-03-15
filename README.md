@@ -17,7 +17,7 @@ Bem-vindo ao ProjetoUsers, uma aplicação que explora os recursos avançados do
 
 ## Como Executar o Projeto
 
-1. Clone o repositório: `git clone https://github.com/AlexMoralesDEV/ProjetoUsers.git`
+1. Clone o repositório: `git clone https://github.com/Caahmos/ProjetoUsers.git`
 2. Acesse o diretório do projeto: `cd ProjetoUsers`
 3. Instale as dependências: `npm install`
 4. Configure as informações do banco de dados no arquivo `db/conne.js`.
